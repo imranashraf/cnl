@@ -22,6 +22,15 @@ namespace cnl {
 
 #if defined(CNL_INT128_ENABLED)
 
+    /// \brief \ref int128 specialization of @ref cnl::numeric_limits
+    /// \headerfile cnl/limits.h
+    ///
+    /// \sa cnl::numeric_limits<uint128>
+    ///
+    /// \note Many (especially later) versions of Clang & GCC do not specialize
+    ///       \ref std::numeric_limits for fundamental 128-bit integers.
+    ///       That's the main reason why \ref cnl::numeric_limits exists.
+
     template<>
     struct numeric_limits<int128> : numeric_limits<long long> {
         static int const digits = CHAR_BIT*sizeof(int128)-1;
@@ -56,6 +65,15 @@ namespace cnl {
             return min();
         }
     };
+
+    /// \brief \ref uint128 specialization of @ref cnl::numeric_limits
+    /// \headerfile cnl/limits.h
+    ///
+    /// \sa cnl::numeric_limits<int128>
+    ///
+    /// \note Many (especially later) versions of Clang & GCC do not specialize
+    ///       \ref std::numeric_limits for fundamental 128-bit integers.
+    ///       That's the main reason why \ref cnl::numeric_limits exists.
 
     template<>
     struct numeric_limits<uint128> : numeric_limits<unsigned long long> {
